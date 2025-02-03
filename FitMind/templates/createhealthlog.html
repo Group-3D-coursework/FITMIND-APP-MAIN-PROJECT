@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.4.js"
+  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+        body {
+          height: 100vh;
+          margin: 0;
+          padding: 0;
+        }
+
+        .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+          margin: 0 auto 100px;
+          height: 100%;
+        }
+
+        form {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          max-width: 400px;
+          margin: 20px;
+          padding: 20px;
+          background-color: white;
+        }
+        form input {
+          font-family: "Roboto", sans-serif;
+          outline: 0;
+          background: #f2f2f2;
+          width: 100%;
+          border: 0;
+          margin: 0 0 15px;
+          padding: 15px;
+          box-sizing: border-box;
+          font-size: 14px;
+        }
+
+        form textarea {
+          font-family: "Roboto", sans-serif;
+          outline: 0;
+          background: #f2f2f2;
+          width: 100%;
+          border: 0;
+          margin: 0 0 15px;
+          padding: 15px;
+          box-sizing: border-box;
+          font-size: 14px;
+          resize: none;
+        }
+
+        form button {
+          font-family: "Roboto", sans-serif;
+          text-transform: uppercase;
+          outline: 0;
+          background-image: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
+          width: 100%;
+          border: 0;
+          padding: 15px;
+          color: #FFFFFF;
+          font-size: 14px;
+          -webkit-transition: all 0.3 ease;
+          transition: all 0.3 ease;
+          cursor: pointer;
+        }
+
+        .title {
+          font-family: "Roboto", sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+ <form id="health_log_data">
+     <h1 class="title">Create a new log</h1>
+     <input type="number" name="rating" id="rating" min="0" max="5" placeholder="Enter Symptom Rating (0-5)" required>
+     <textarea name="description" id="description" placeholder="Enter any notes required for the day"></textarea>
+     <button name="submit" id="submit" onclick="API_FETCH();">Submit</button>
+ </form>
+</div>
+</body>
+<script>
+async function API_FETCH(event) {
+ document.getElementById("submit").disabled = true;
+ navigator.geolocation.getCurrentPosition(position => {
+ const { latitude, longitude } = position.coords;
+ const airAPi = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&hourly=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen`;
+ async function apiCall() {
+ const KEY = "AIzaSyCu26zidBwPHKxebJeHwlEqjLlCBIaHXdc";
+ let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${KEY}`;
+ const response = await fetch(airAPi, {
+ method: "GET"
+ });
+ let data = await response.json();
+ console.log(data);
+ //let today = (data.data.values.temperature)//
+ const response2 = await fetch(url, {
+ method: "GET"
+ });
+ let data2 = await response2.json();
+ console.log(data2);
+ fetch("{{ url_for('tracker')}}", {
+ method: "POST",
+ body: JSON.stringify({
+ symptoms : $('#rating').val(),
+ latitude : (position.coords.latitude),
+ longitude : (position.coords.longitude),
+ loggerDescription : $('#description').val(),
+ api : (data),
+ }),
+ headers: {
+ "Content-type": "application/json; charset=UTF-8"
+ }
+ })
+ .then((response)=>{
+ if(response.redirected){
+ window.location.href = response.url;
+ }
+ })
+};
+apiCall();
+ });
+}
+
+
+</script>
+</html>

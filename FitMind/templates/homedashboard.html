@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<style>
+    .card{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+</style>
+<body>
+{% include 'dashboard_template.html' %}
+
+{% with messages = get_flashed_messages() %}
+       {% if messages %}
+         <script>
+             callmodal();
+         </script>
+       {% endif %}
+   {% endwith %}
+<!--   <div class="wrapper">-->
+<!--         <h1>Your profile</h1>-->
+<!--           <div class="card">-->
+<!--            <div class="profile-image">-->
+<!--             <img src=data:image/png;base64,{{current_user.profile_pic}} alt="Your Profile Picture">-->
+<!--            </div>-->
+<!--            <div class="profile-box">-->
+<!--             <H3>Username: {{current_user.username}}</H3>-->
+<!--             <p>E-mail: {{current_user.email}}</p>-->
+<!--             <p>Your ID: {{current_user.id}}</p>-->
+<!--            </div>-->
+<!--           </div>-->
+<!--       </div>-->
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+        *{
+         box-sizing: border-box;
+         font-family: 'Poppins', sans-serif;
+        }
+        body {
+          margin: 0;
+          background-color: gray;
+          padding-top: 100px;
+          padding-left: 250px;
+          padding-right: 50px;
+        }
+        .header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 50px;
+          display: flex;
+          align-elements: center;
+          justify-content: space-between;
+          background-color: white;
+        }
+
+        .leftbox {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .company {
+          padding-left: 20px;
+        }
+
+        .rightbox img {
+            object-fit: cover;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .rightbox{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding-right: 10px;
+        }
+
+        .sidebar{
+           position: fixed;
+           display: flex;
+           flex-direction: column;
+           align-elements: center;
+           top: 50px;
+           left: 0;
+           bottom: 0;
+           width: 200px;
+           background-color: #405BC9;
+        }
+
+        .sidenavitem{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          height: 50px;
+          text-decoration: none;
+          color: white;
+        }
+        .sidenavitem:hover {
+          border-bottom: 3px solid #FFF;
+        }
+        .burgermenu {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           height: 50px;
+           width: 50px;
+           background-color: #405BC9;
+           color: white;
+        }
+
+        body .collapse{
+          padding-left: 100px;
+        }
+        .sidebar .collapse{
+          width: 50px;
+        }
+
+
+    </style>
+</head>
+<body class="container">
+<header>
+    <div class="header">
+        <div class="leftbox">
+            <div class="burgermenu"><i class="fa fa-bars"></i></div>
+            <div class="company">Health Advice Group</div>
+        </div>
+        <div class="rightbox">
+            <p>logged in as : {{current_user.username}}</p>
+            <img src="data:image/png;base64,{{current_user.profile_image}}">
+        </div>
+    </div>
+</header>
+<nav>
+    <div class="sidebar">
+        <div class="sidenavitem"><h1>Dashboard</h1></div>
+        <div class="sidenavitem"><img src="data:image/png;base64,{{current_user.profile_image}}"></div>
+        <div class="sidenavitem">Pollen Forecast<a href="{{ url_for('pollen') }}"></a></div>
+        <a class="sidenavitem" href="{{ url_for('weather') }}">Weather Forecast</a>
+        <div class="sidenavitem">Air Quality Forecast</div>
+        <a class="sidenavitem" href="{{ url_for('tracker') }}">Health Logger</a>
+        <div class="sidenavitem">Risk Assessments</div>
+        <div class="sidenavitem">Your Profile</div>
+        <a class="sidenavitem" href="{{ url_for('logout') }}">Log out</a>
+    </div>
+</nav>
+</body>
+<script>
+    $(".burgermenu").click(function(){
+   $("body").toggleClass("collapse");
+});
+</script>
+</html>

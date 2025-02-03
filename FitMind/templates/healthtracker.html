@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+.charts {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+}
+.chart {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+.chart h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #666;
+    text-align: center
+}
+@media (max-width:1115px) {
+    .sidebar {
+        width: 60px;
+    }
+    .main {
+        width: calc(100% - 60px);
+        left: 60px;
+    }
+}
+@media (max-width:880px) {
+    .cards {
+        width: 100%;
+        padding: 35px 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+    .charts {
+        grid-template-columns: 1fr;
+    }
+    .doughnut-chart {
+        padding: 50px;
+    }
+    #doughnut {
+        padding: 50px;
+    }
+}
+@media (max-width:500px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    .doughnut-chart {
+        padding: 10px;
+    }
+    #doughnut {
+        padding: 0px;
+    }
+
+}
+.main {
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 260px);
+    min-height: calc(100vh - 60px);
+    left: 260px;
+    background: #f5f5f5;
+}
+
+.tablecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+    </style>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.4/jquery.datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+<body>
+{% include 'dashboard_template.html' %}
+<a href="{{ url_for('createlog')}}">add new entry</a>
+<div class="charts">
+                <div class="chart">
+                    <h2>User Pollen Levels</h2>
+                    <div>
+                        <canvas id="multipleLineChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart doughnut-chart">
+                    <h2>User Symptom Distribution</h2>
+                    <div>
+                        <canvas id="doughnut"></canvas>
+                    </div>
+                </div>
+            </div>
+         <div class="tablecontainer">
+             <table id="loggerdata">
+                  <tr>
+                    <th>Log ID</th>
+                    <th>Symptom Rating</th>
+                    <th>Air Quality</th>
+                    <th>Pollen Level</th>
+                    <th>Time Recorded</th>
+                    <th>Your Description</th>
+                  </tr>
+                   {% for i in Logs %}
+                      <tr>
+                        <td>{{i.log_id}}</td>
+                        <td>{{i.symptom_rating}}</td>
+                        <td>{{i.air_quality}}</td>
+                        <td>{{i.pollen_level}}</td>
+                        <td>{{i.time_recorded}}</td>
+                        <td>{{i.user_description}}</td>
+                      </tr>
+                   {% endfor %}
+                </table>
+         </div>
+</body>
+<script>
+const ctx = document.getElementById('multipleLineChart').getContext('2d');
+
+const chart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [{% for i in Logs %}
+"{{i.logged_at}}",
+{% endfor %}],
+    datasets: [{
+        label: 'Symptom Rating',
+        data: [{% for i in Logs %}
+"{{i.symptom_rating}}",
+{% endfor %}],
+        borderWidth: 1,
+        fill: false,
+        borderColor: 'red'
+      },
+      {
+      label: 'Pollen Level',
+        data: [{% for i in Logs %}
+"{{i.pollen_level}}",
+{% endfor %}],
+        borderWidth: 1,
+        fill: false,
+        borderColor: 'green'
+      },
+      {
+        label: 'Air Quality Level',
+        data: [{% for i in Logs %}
+"{{i.air_quality}}",
+{% endfor %}],
+        borderWidth: 1,
+        fill: false,
+        borderColor: 'yellow'
+      }
+    ]
+  },
+  options: {
+    responsive: true
+   }
+});
+
+$(document).ready(function () {
+    $('#loggerdata').DataTable();
+});
+
+var ctx2 = document.getElementById('doughnut').getContext('2d');
+var myChart2 = new Chart(ctx2, {
+    type: 'doughnut',
+    data: {
+        labels: ['Academic', 'Non-Academic', 'Administration', 'Others'],
+        datasets: [{
+            label: 'Employees',
+            data: [42, 12, 8, 6],
+            backgroundColor: [
+                'rgba(41, 155, 99, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(120, 46, 139,1)'
+            ],
+            borderColor: [
+                'rgba(41, 155, 99, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(120, 46, 139,1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+</script>
+</html>

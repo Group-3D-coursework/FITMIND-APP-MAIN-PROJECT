@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update User Profile</title>
+  </head>
+  <body>
+     <form enctype="multipart/form-data" action="/profile" method="POST">
+      <input name="uploaded_image" id="uploaded_image" type="file" accept="image/*" onchange="UpdateImage(event)">
+      <p><img id="ProfileImage" width="200"/></p>
+      <script>
+          var UpdateImage = function(event) {
+              var NewImage = document.getElementById('ProfileImage');
+              NewImage.src=URL.createObjectURL(event.target.files[0]);
+          };
+      </script>
+      <input type="submit" placeholder="make changes">
+     </form>
+  </body>
+</html>
