@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitMind - Exercise Tracking</title>
+    <link rel="stylesheet" href="exercise.css">
+    <script defer src="exercise.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <div class="menu-container">
+                <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i> Menu</div>
+            </div>
+            <div class="logo"><a href="/FITMIND-APP-MAIN-PROJECT/FrontEnd/Home_Page/index.html">FitMind</a></div>
+            <a href="/FITMIND-APP-MAIN-PROJECT/FrontEnd/Sign_Page/sign-in.html"><button class="sign-in">Sign In</button>
+            </a>
+        </div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="menu-box" id="menu-box">
+        <div class="menu-icon-top">
+            <i class="fas fa-dumbbell"></i>
+        </div>
+
+        <ul>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/stress.html"><i class="fas fa-heartbeat"></i> Stress Tracking</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/exercise.html"><i class="fas fa-dumbbell"></i> Exercise Tracking</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/community.html"><i class="fas fa-users"></i> Community</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/notes.html"><i class="fas fa-sticky-note"></i> My Note</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/FrontEnd/Notification_Page/notification.html"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/about.html"><i class="fas fa-user"></i> About Us</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Track Your Fitness Journey</h1>
+        <p>Log your workouts and monitor your progress.</p>
+        <a href="#exercise-section"><button class="start-tracking">Start Tracking</button></a>
+
+    </section>
+
+    <!-- Exercise Form Section -->
+    <section class="exercise-section">
+        <h2><i class="fas fa-dumbbell"></i> Log Your Workout</h2>
+
+        <form id="exercise-form">
+            <div class="form-group">
+                <label for="exercise-type">Choose Exercise Type:</label>
+                <select id="exercise-type">
+                    <option value="Cardio">Cardio</option>
+                    <option value="Stretching">Stretching</option>
+                    <option value="Strength">Strength Training</option>
+                    <option value="Recreational">Recreational (Running, Cycling)</option>
+                    <option value="Yoga">Yoga</option>
+                    <option value="HIIT">High-Intensity Interval Training (HIIT)</option>
+                    <option value="Pilates">Pilates</option>
+                    <option value="Custom">Custom</option>
+                </select>
+                <input type="text" id="custom-exercise" placeholder="Enter custom exercise" style="display:none;">
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" placeholder="Enter duration" required>
+            </div>
+
+            <button type="submit" class="log-btn">Log Exercise</button>
+        </form>
+    </section>
+
+    <!-- Logged Exercises -->
+    <section class="exercise-log">
+        <h2>Logged Exercises</h2>
+        <ul id="exercise-list"></ul>
+    </section>
+
+    <!-- Progress Chart -->
+    <section class="progress-section">
+        <h2>Your Progress</h2>
+        <canvas id="progress-chart"></canvas>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="recommendations">
+        <h2>Personalized Recommendations</h2>
+        <ul id="suggestions-list"></ul>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>FitMind</h2>
+                <p>Track your fitness and stress levels effortlessly.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/index.html">Home</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/exercise.html">Exercise Tracking</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/stress.html">Stress Tracking</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/community.html">Community</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/notes.html">My Notes</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@fitmind.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitMind. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

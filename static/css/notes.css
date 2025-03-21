@@ -1,0 +1,438 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body */
+body {
+    background: #f0f2f5;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00796b;
+    text-decoration: none;
+}
+
+.sign-in {
+    background: #00796b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sign-in:hover {
+    background: #005f56;
+}
+
+/* Sidebar Menu */
+.menu-box {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #222;
+    padding-top: 100px;
+    transition: 0.5s ease-in-out;
+    z-index: 1000;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Top Icon */
+.menu-icon-top {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    position: relative;  /* Allows fine-tuned positioning */
+    top: -20px;  /* Moves the icon up */
+    margin-bottom: 10px;  /* Reduces space below */
+}
+
+/* Adjusted Menu Icon */
+.menu-icon {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.menu-box.active {
+    left: 0;
+}
+
+.menu-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-box ul li {
+    padding: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.menu-box ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    transition: background 0.3s;
+    padding: 15px;
+}
+
+.menu-box ul li a:hover {
+    background: #444;
+    padding-left: 20px;
+}
+
+/* HERO SECTION */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: #e0f2f1;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 36px;
+    color: #004d40;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+}
+
+.start-notes {
+    background: #ff6600;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background 0.3s ease-in-out;
+}
+
+.start-notes:hover {
+    background: #e65c00;
+}
+
+/* Notes Section */
+.notes-section {
+    background: white;
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.notes-section h2 {
+    font-size: 24px;
+    color: #004d40;
+    margin-bottom: 20px;
+}
+
+/* Note Input Form */
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.note-form input,
+.note-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border 0.3s;
+    resize: none;
+}
+
+.note-form input:focus,
+.note-form textarea:focus {
+    border-color: #00796b;
+}
+
+.note-form button {
+    padding: 12px;
+    font-size: 16px;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.note-form button:hover {
+    background: #005f56;
+}
+
+/* Search & Show All Buttons */
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#search-notes {
+    flex-grow: 1;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: border 0.3s ease-in-out;
+}
+
+#search-notes:focus {
+    border-color: #00796b;
+}
+
+#search-btn,
+#show-all-btn {
+    padding: 12px;
+    font-size: 16px;
+    background: #00796b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#search-btn:hover,
+#show-all-btn:hover {
+    background: #005f56;
+}
+
+/* Notes Container */
+.notes-container {
+    text-align: left;
+    margin-top: 25px;
+}
+
+.notes-container h2 {
+    font-size: 18px;
+    color: #004d40;
+    margin-bottom: 10px;
+}
+
+#notes-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual Note Card */
+.note-card {
+    background: #f0f9f4;
+    border: 1px solid #d4edda;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.note-card:hover {
+    transform: scale(1.02);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.note-content {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.note-date {
+    font-size: 12px;
+    color: gray;
+}
+
+/* Delete Button */
+.delete-note {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    transition: background 0.3s;
+}
+
+.delete-note:hover {
+    background: #e84118;
+}
+
+/* Footer Styling */
+.footer {
+    background: #00796b;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer h2, .footer h3 {
+    margin-bottom: 10px;
+}
+
+.footer p, .footer ul {
+    font-size: 14px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 8px;
+}
+
+.footer ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer ul li a:hover {
+    color: #ffcc00;
+}
+
+.footer-contact, .footer-social {
+    text-align: center;
+}
+
+.footer-social a {
+    color: white;
+    font-size: 20px;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #ffcc00;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    #search-btn,
+    #show-all-btn {
+        width: 100%;
+    }
+
+    .notes-section {
+        padding: 20px;
+    }
+
+    .note-card {
+        font-size: 14px;
+    }
+
+    .menu-box {
+        width: 200px;
+    }
+
+    .menu-box ul li a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .menu-box ul li a:hover {
+        padding-left: 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-contact, .footer-social {
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-social a {
+        font-size: 24px;
+    }
+
+    .footer-bottom {
+        padding: 10px 0;
+    }
+
+    .footer ul li a {
+        font-size: 12px;
+    }
+}

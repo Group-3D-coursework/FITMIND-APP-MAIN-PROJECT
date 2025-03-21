@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitMind - Stress Tracking</title>
+    <link rel="stylesheet" href="/FITMIND-APP-MAIN-PROJECT/static/css/stress.css">
+    <script defer src="/FITMIND-APP-MAIN-PROJECT/static/js/stress.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <div class="menu-container">
+                <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i> Menu</div>
+            </div>
+            <div class="logo"><a href="/FITMIND-APP-MAIN-PROJECT/templates/index.html">FitMind</a></div>
+            <a href="/FITMIND-APP-MAIN-PROJECT/templates/login.html"><button class="sign-in">Sign In</button></a>
+        </div>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <div class="menu-box" id="menu-box">
+        <div class="menu-icon-top">
+            <i class="fas fa-heartbeat"></i>
+        </div>
+
+        <ul>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/stress.html"><i class="fas fa-heartbeat"></i> Stress Tracking</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/exercise.html"><i class="fas fa-dumbbell"></i> Exercise Tracking</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/community.html"><i class="fas fa-users"></i> Community</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/notes.html"><i class="fas fa-sticky-note"></i> My Note</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/FrontEnd/Notification_Page/notification.html"><i class="fas fa-bell"></i> Notifications</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/about.html"><i class="fas fa-user"></i> About Us</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Manage Your Stress</h1>
+        <p>Track your stress levels and receive personalized relaxation tips.</p>
+        <a href="#stress-section"><button class="start-tracking">Start Tracking</button></a>
+    </section>
+
+    <!-- Stress Tracking Form -->
+    <section class="stress-section">
+        <h2><i class="fas fa-brain"></i> Log Your Stress Level</h2>
+
+        <form id="stress-form">
+            <div class="form-group">
+                <label>How stressed are you today? (Click On The Emoji)</label>
+                <div class="emoji-scale">
+                    <label><input type="radio" name="stress-level" value="1"> 😌</label>
+                    <label><input type="radio" name="stress-level" value="2"> 🙂</label>
+                    <label><input type="radio" name="stress-level" value="3"> 😐</label>
+                    <label><input type="radio" name="stress-level" value="4"> 😟</label>
+                    <label><input type="radio" name="stress-level" value="5"> 😫</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="stress-cause">What caused your stress today?</label>
+                <input type="text" id="stress-cause" placeholder="e.g., Exams, Deadlines">
+            </div>
+
+            <div class="form-group">
+                <label for="additional-notes">Additional Notes (optional)</label>
+                <textarea id="additional-notes" rows="3" placeholder="Add any notes..."></textarea>
+            </div>
+
+            <button type="submit" class="log-btn">Log Stress</button>
+        </form>
+    </section>
+
+    <!-- Logged Stress Entries -->
+    <section class="stress-log">
+        <h2>Logged Stress Entries</h2>
+        <ul id="stress-list"></ul>
+    </section>
+
+    <!-- Relaxation Recommendations -->
+    <section class="relaxation-suggestions">
+        <h2>Recommended Relaxation Techniques</h2>
+        <ul id="relaxation-list"></ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>FitMind</h2>
+                <p>Track your fitness and stress levels effortlessly.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/index.html">Home</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/exercise.html">Exercise Tracking</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/stress.html">Stress Tracking</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/community.html">Community</a></li>
+                    <li><a href="/FITMIND-APP-MAIN-PROJECT/templates/notes.html">My Notes</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@fitmind.com</p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 FitMind. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
