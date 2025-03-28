@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>About Us</h1>
+        </div>
+    </header>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>Our mission is to empower individuals to achieve their fitness goals and reduce stress through expert guidance, community support, and personalized fitness plans</p>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="team-container">
+                <div class="team-member" onclick="showModal('Augustine')">
+                    
+                    <h3>Augustine</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Osarigbi')">
+                   
+                    <h3>Osarigbi</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Godfrey')">
+                    
+                    <h3>Godfrey</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Samuel')">
+                    
+                    <h3>Samuel</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Riddhi')">
+                    
+                    <h3>Riddhi</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Danever')">
+                    
+                    <h3>Danever</h3>
+                    <p>CEO</p>
+                </div>
+                <div class="team-member" onclick="showModal('Luis')">
+                    
+                    <h3>Luis</h3>
+                    <p>CEO</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
